@@ -19,11 +19,13 @@ formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(messag
 ch.setFormatter(formatter)
 root.addHandler(ch)
 
+
 def find_file(dir_name, best_epoch):
     for dir, subdir, files in os.walk(dir_name):
         for sub in subdir:
-            if sub[0:len(best_epoch)] == best_epoch and sub[len(best_epoch)]=="_":
+            if sub[0:len(best_epoch)] == best_epoch and sub[len(best_epoch)] == "_":
                 return sub
+
 
 def load_params(prefix, epoch):
     save_dict = nd.load('%s-%04d.params' % (prefix, epoch))
@@ -37,6 +39,7 @@ def load_params(prefix, epoch):
             aux_params[name] = v
     return arg_params, aux_params
 
+
 def train_one_dataset(params, file_name, train_q_data, train_qa_data, valid_q_data, valid_qa_data):
     ### ================================== model initialization ==================================
     g_model = MODEL(n_question=params.n_question,
@@ -47,11 +50,11 @@ def train_one_dataset(params, file_name, train_q_data, train_qa_data, valid_q_da
                     memory_size=params.memory_size,
                     memory_key_state_dim=params.memory_key_state_dim,
                     memory_value_state_dim=params.memory_value_state_dim,
-                    final_fc_dim = params.final_fc_dim)
+                    final_fc_dim=params.final_fc_dim)
     # create a module by given a Symbol
     net = mx.mod.Module(symbol=g_model.sym_gen(),
-                        data_names = ['q_data', 'qa_data'],
-                        label_names = ['target'],
+                        data_names=['q_data', 'qa_data'],
+                        label_names=['target'],
                         context=params.ctx)
     # create memory by given input shapes
     net.bind(data_shapes=[mx.io.DataDesc(name='q_data', shape=(params.seqlen, params.batch_size), layout='SN'),
@@ -60,9 +63,11 @@ def train_one_dataset(params, file_name, train_q_data, train_qa_data, valid_q_da
     # initial parameters with the default random initializer
     net.init_params(initializer=mx.init.Normal(sigma=params.init_std))
     # decay learning rate in the lr_scheduler
-    lr_scheduler = mx.lr_scheduler.FactorScheduler(step=20*(train_q_data.shape[0]/params.batch_size), factor=0.667, stop_factor_lr=1e-5)
+    lr_scheduler = mx.lr_scheduler.FactorScheduler(step=20 * (train_q_data.shape[0] / params.batch_size), factor=0.667,
+                                                   stop_factor_lr=1e-5)
 
-    net.init_optimizer(optimizer='sgd', optimizer_params={'learning_rate': params.lr, 'momentum':params.momentum,'lr_scheduler': lr_scheduler})
+    net.init_optimizer(optimizer='sgd', optimizer_params={'learning_rate': params.lr, 'momentum': params.momentum,
+                                                          'lr_scheduler': lr_scheduler})
 
     for parameters in net.get_params()[0]:
         print(parameters, net.get_params()[0][parameters].asnumpy().shape)
@@ -85,7 +90,7 @@ def train_one_dataset(params, file_name, train_q_data, train_qa_data, valid_q_da
         print("valid_auc\t", valid_auc, "\ttrain_auc\t", train_auc)
         print("valid_accuracy\t", valid_accuracy, "\ttrain_accuracy\t", train_accuracy)
         print("valid_loss\t", valid_loss, "\ttrain_loss\t", train_loss)
-        net.save_checkpoint(prefix=os.path.join('model', params.save, file_name), epoch=idx+1)
+        net.save_checkpoint(prefix=os.path.join('model', params.save, file_name), epoch=idx + 1)
 
         all_valid_auc[idx + 1] = valid_auc
         all_train_auc[idx + 1] = train_auc
@@ -95,9 +100,9 @@ def train_one_dataset(params, file_name, train_q_data, train_qa_data, valid_q_da
         all_train_accuracy[idx + 1] = train_accuracy
 
         # output the epoch with the best validation auc
-        if valid_auc > best_valid_auc :
+        if valid_auc > best_valid_auc:
             best_valid_auc = valid_auc
-            best_epoch = idx+1
+            best_epoch = idx + 1
 
     f_save_log = open(os.path.join('result', params.save, file_name), 'w')
     f_save_log.write("valid_auc:\n" + str(all_valid_auc) + "\n\n")
@@ -108,6 +113,7 @@ def train_one_dataset(params, file_name, train_q_data, train_qa_data, valid_q_da
     f_save_log.write("train_accuracy:\n" + str(all_train_accuracy) + "\n\n")
     f_save_log.close()
     return best_epoch
+
 
 def test_one_dataset(params, file_name, test_q_data, test_qa_data, best_epoch):
     print("\n\nStart testing ......................\n Best epoch:", best_epoch)
@@ -139,6 +145,7 @@ def test_one_dataset(params, file_name, test_q_data, test_qa_data, best_epoch):
     print("test_accuracy\t", test_accuracy)
     print("test_loss\t", test_loss)
 
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Script to test KVMN.')
     parser.add_argument('--gpus', type=str, default='0', help='the gpus will be used, e.g "0,1,2,3"')
@@ -157,7 +164,8 @@ if __name__ == '__main__':
 
         parser.add_argument('--init_std', type=float, default=0.1, help='weight initialization std')
         parser.add_argument('--init_lr', type=float, default=0.05, help='initial learning rate')
-        parser.add_argument('--final_lr', type=float, default=1E-5, help='learning rate will not decrease after hitting this threshold')
+        parser.add_argument('--final_lr', type=float, default=1E-5,
+                            help='learning rate will not decrease after hitting this threshold')
         parser.add_argument('--momentum', type=float, default=0.9, help='momentum rate')
         parser.add_argument('--maxgradnorm', type=float, default=50.0, help='maximum gradient norm')
         parser.add_argument('--final_fc_dim', type=float, default=50, help='hidden state dim for final fc layer')
@@ -176,7 +184,8 @@ if __name__ == '__main__':
 
         parser.add_argument('--init_std', type=float, default=0.1, help='weight initialization std')
         parser.add_argument('--init_lr', type=float, default=0.05, help='initial learning rate')
-        parser.add_argument('--final_lr', type=float, default=1E-5, help='learning rate will not decrease after hitting this threshold')
+        parser.add_argument('--final_lr', type=float, default=1E-5,
+                            help='learning rate will not decrease after hitting this threshold')
         parser.add_argument('--momentum', type=float, default=0.9, help='momentum rate')
         parser.add_argument('--maxgradnorm', type=float, default=50.0, help='maximum gradient norm')
         parser.add_argument('--final_fc_dim', type=float, default=50, help='hidden state dim for final fc layer')
@@ -195,7 +204,8 @@ if __name__ == '__main__':
 
         parser.add_argument('--init_std', type=float, default=0.1, help='weight initialization std')
         parser.add_argument('--init_lr', type=float, default=0.1, help='initial learning rate')
-        parser.add_argument('--final_lr', type=float, default=1E-5, help='learning rate will not decrease after hitting this threshold')
+        parser.add_argument('--final_lr', type=float, default=1E-5,
+                            help='learning rate will not decrease after hitting this threshold')
         parser.add_argument('--momentum', type=float, default=0.9, help='momentum rate')
         parser.add_argument('--maxgradnorm', type=float, default=50.0, help='maximum gradient norm')
         parser.add_argument('--final_fc_dim', type=float, default=50, help='hidden state dim for final fc layer')
@@ -220,7 +230,8 @@ if __name__ == '__main__':
         parser.add_argument('--maxgradnorm', type=float, default=50.0, help='maximum gradient norm')
         parser.add_argument('--final_fc_dim', type=float, default=50, help='hidden state dim for final fc layer')
 
-        parser.add_argument('--n_question', type=int, default=1223, help='the number of unique questions in the dataset')
+        parser.add_argument('--n_question', type=int, default=1223,
+                            help='the number of unique questions in the dataset')
         parser.add_argument('--seqlen', type=int, default=200, help='the allowed maximum length of a sequence')
         parser.add_argument('--data_dir', type=str, default='../../data/STATICS', help='data directory')
         parser.add_argument('--data_name', type=str, default='STATICS', help='data set name')
@@ -233,7 +244,7 @@ if __name__ == '__main__':
     params.memory_value_state_dim = params.qa_embed_dim
 
     params.dataset = dataset
-    if params.gpus == None:
+    if params.gpus == None or params.gpus == '0':
         ctx = mx.cpu()
         print("Training with cpu ...")
     else:
@@ -244,7 +255,7 @@ if __name__ == '__main__':
     # Read data
     dat = DATA(n_question=params.n_question, seqlen=params.seqlen, separate_char=',')
 
-    seedNum =224
+    seedNum = 224
     np.random.seed(seedNum)
     if not params.test:
         params.memory_key_state_dim = params.q_embed_dim
@@ -256,7 +267,7 @@ if __name__ == '__main__':
                     '_q' + str(params.q_embed_dim) + '_qa' + str(params.qa_embed_dim) + \
                     '_m' + str(params.memory_size) + '_std' + str(params.init_std) + \
                     '_lr' + str(params.init_lr) + '_gn' + str(params.maxgradnorm) + \
-                    '_f' + str(params.final_fc_dim)+'_s'+str(seedNum)
+                    '_f' + str(params.final_fc_dim) + '_s' + str(seedNum)
         train_data_path = params.data_dir + "/" + params.data_name + "_train1.csv"
         valid_data_path = params.data_dir + "/" + params.data_name + "_valid1.csv"
         train_q_data, train_qa_data = dat.load_data(train_data_path)
@@ -275,7 +286,7 @@ if __name__ == '__main__':
     else:
         params.memory_key_state_dim = params.q_embed_dim
         params.memory_value_state_dim = params.qa_embed_dim
-        test_data_path = params.data_dir + "/" + params.data_name  +"_test.csv"
+        test_data_path = params.data_dir + "/" + params.data_name + "_test.csv"
         test_q_data, test_qa_data = dat.load_data(test_data_path)
         best_epoch = 30
         file_name = 'b' + str(params.batch_size) + \

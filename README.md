@@ -70,6 +70,11 @@ The third line is the response sequence.
  python main.py --gpus 0
  ```
 
+On Duolingo dataset
+```
+python main.py --gpus 0  --n_question 2915 --seqlen 2000 --data_dir ../../data/duolingo --data_name token_unsplitted 
+
+```
 ### Testing
  ```
  python main.py --gpus 0 --test True
