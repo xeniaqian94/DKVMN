@@ -73,6 +73,7 @@ The third line is the response sequence.
 On Duolingo dataset
 ```
 python main.py --gpus 0  --n_question 2915 --seqlen 2000 --data_dir ../../data/duolingo --data_name token_unsplitted 
+python main.py --gpus 0  --n_question 14 --seqlen 2000 --data_dir ../../data/duolingo --data_name part_of_speech_unsplitted 
 
 ```
 ### Testing
