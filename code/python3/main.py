@@ -247,26 +247,26 @@ if __name__ == '__main__':
     #     parser.add_argument('--load', type=str, default='assist2015', help='model file to load')
     #     parser.add_argument('--save', type=str, default='assist2015', help='path to save model')
     # elif dataset == "STATICS":
-        parser.add_argument('--batch_size', type=int, default=10, help='the batch size')
-        parser.add_argument('--q_embed_dim', type=int, default=50, help='question embedding dimensions')
-        parser.add_argument('--qa_embed_dim', type=int, default=100, help='answer and question embedding dimensions')
-        parser.add_argument('--memory_size', type=int, default=50, help='memory size')
+        # parser.add_argument('--batch_size', type=int, default=10, help='the batch size')
+        # parser.add_argument('--q_embed_dim', type=int, default=50, help='question embedding dimensions')
+        # parser.add_argument('--qa_embed_dim', type=int, default=100, help='answer and question embedding dimensions')
+        # parser.add_argument('--memory_size', type=int, default=50, help='memory size')
 
-        parser.add_argument('--init_std', type=float, default=0.1, help='weight initialization std')
-        parser.add_argument('--init_lr', type=float, default=0.01, help='initial learning rate')
-        parser.add_argument('--final_lr', type=float, default=1E-5,
-                            help='learning rate will not decrease after hitting this threshold')
-        parser.add_argument('--momentum', type=float, default=0.9, help='momentum rate')
-        parser.add_argument('--maxgradnorm', type=float, default=50.0, help='maximum gradient norm')
-        parser.add_argument('--final_fc_dim', type=float, default=50, help='hidden state dim for final fc layer')
+        # parser.add_argument('--init_std', type=float, default=0.1, help='weight initialization std')
+        # parser.add_argument('--init_lr', type=float, default=0.01, help='initial learning rate')
+        # parser.add_argument('--final_lr', type=float, default=1E-5,
+        #                     help='learning rate will not decrease after hitting this threshold')
+        # parser.add_argument('--momentum', type=float, default=0.9, help='momentum rate')
+        # parser.add_argument('--maxgradnorm', type=float, default=50.0, help='maximum gradient norm')
+        # parser.add_argument('--final_fc_dim', type=float, default=50, help='hidden state dim for final fc layer')
 
-        parser.add_argument('--n_question', type=int, default=1223,
-                            help='the number of unique questions in the dataset')
-        parser.add_argument('--seqlen', type=int, default=200, help='the allowed maximum length of a sequence')
-        parser.add_argument('--data_dir', type=str, default='../../data/STATICS', help='data directory')
-        parser.add_argument('--data_name', type=str, default='STATICS', help='data set name')
-        parser.add_argument('--load', type=str, default='STATICS', help='model file to load')
-        parser.add_argument('--save', type=str, default='STATICS', help='path to save model')
+        # parser.add_argument('--n_question', type=int, default=1223,
+        #                     help='the number of unique questions in the dataset')
+        # parser.add_argument('--seqlen', type=int, default=200, help='the allowed maximum length of a sequence')
+        # parser.add_argument('--data_dir', type=str, default='../../data/STATICS', help='data directory')
+        # parser.add_argument('--data_name', type=str, default='STATICS', help='data set name')
+        # parser.add_argument('--load', type=str, default='STATICS', help='model file to load')
+        # parser.add_argument('--save', type=str, default='STATICS', help='path to save model')
 
     params = parser.parse_args()
     params.lr = params.init_lr
