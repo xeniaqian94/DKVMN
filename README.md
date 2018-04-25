@@ -78,9 +78,9 @@ cd code/python3/
 1. python main.py --gpus 0  --n_question 2915 --seqlen 2000 --data_dir ../../data/duolingo --data_name token_unsplitted 
 2. python main.py --gpus 0  --n_question 14 --seqlen 2000 --data_dir ../../data/duolingo --data_name part_of_speech_unsplitted 
 
-3. (042418 on PC) python main.py --gpus 0 --n_question 3301  --seqlen 10000 --data_dir ../../data/duolingo --data_name new_split_appendFalse_token_unsplitted
+3. (042418 on PC) python main.py --n_question 3301  --seqlen 10000 --data_dir ../../data/duolingo --data_name new_split_appendFalse_token_unsplitted
 4. (042418 on GPU) python main.py --gpus 1 --n_question 3301  --seqlen 10000 --data_dir ../../data/duolingo --data_name new_split_appendFalse_token_unsplitted
-5. (042418.toy on PC) python main.py --gpus 0 --n_question 3301  --seqlen 10000 --data_dir ../../data/duolingo --data_name new_split_appendTrue_token_unsplitted_toy --split --batch_size 3 
+5. (042418.toy on CPU/PC) python main.py --n_question 3301  --seqlen 10000 --data_dir ../../data/duolingo --data_name new_split_appendTrue_token_unsplitted_toy --split --batch_size 3 
 
 ```
 ### Testing
