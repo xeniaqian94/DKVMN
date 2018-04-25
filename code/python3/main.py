@@ -245,6 +245,7 @@ if __name__ == '__main__':
         parser.add_argument('--load', type=str, default='STATICS', help='model file to load')
         parser.add_argument('--save', type=str, default='STATICS', help='path to save model')
 
+
     if dataset == "duolingo":
         parser.add_argument('--batch_size', type=int, default=32, help='the batch size')
         parser.add_argument('--q_embed_dim', type=int, default=50, help='question embedding dimensions')
