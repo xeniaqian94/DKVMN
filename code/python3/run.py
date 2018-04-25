@@ -201,12 +201,13 @@ def test(net, params, q_data, qa_data, label, split_data=None):
     print("after trimming to have valid only...")
     print(all_pred, len(all_pred))
     print(all_target, len(all_target))
+    print("Duolingo F1 is ", compute_duolingo_f1(all_target, all_pred))
 
     loss = binaryEntropy(all_target, all_pred)
     auc = compute_auc(all_target, all_pred)
     accuracy = compute_accuracy(all_target, all_pred)
 
-    return loss, accuracy, auc, compute_f1(all_target, all_pred)
+    return loss, accuracy, auc, compute_f1(all_target, all_pred), compute_auroc(all_target, all_pred)
 
 
 def trim_valid_only(all_pred, all_target, split_data):
@@ -225,3 +226,67 @@ def trim_valid_only(all_pred, all_target, split_data):
     all_target = np.concatenate(target_list, axis=0)
 
     return all_pred, all_target
+
+def compute_auroc(actual, predicted):
+    """
+    Computes the area under the receiver-operator characteristic curve.
+    This code a rewriting of code by Ben Hamner, available here:
+    https://github.com/benhamner/Metrics/blob/master/Python/ml_metrics/auc.py
+    """
+    num = len(actual)
+    temp = sorted([[predicted[i], actual[i]] for i in range(num)], reverse=True)
+
+    sorted_predicted = [row[0] for row in temp]
+    sorted_actual = [row[1] for row in temp]
+
+    sorted_posterior = sorted(zip(sorted_predicted, range(len(sorted_predicted))))
+    r = [0 for k in sorted_predicted]
+    cur_val = sorted_posterior[0][0]
+    last_rank = 0
+    for i in range(len(sorted_posterior)):
+        if cur_val != sorted_posterior[i][0]:
+            cur_val = sorted_posterior[i][0]
+            for j in range(last_rank, i):
+                r[sorted_posterior[j][1]] = float(last_rank+1+i)/2.0
+            last_rank = i
+        if i==len(sorted_posterior)-1:
+            for j in range(last_rank, i+1):
+                r[sorted_posterior[j][1]] = float(last_rank+i+2)/2.0
+
+    num_positive = len([0 for x in sorted_actual if x == 1])
+    num_negative = num - num_positive
+    sum_positive = sum([r[i] for i in range(len(r)) if sorted_actual[i] == 1])
+    auroc = ((sum_positive - num_positive * (num_positive + 1) / 2.0) / (num_negative * num_positive))
+
+    return auroc
+
+def compute_duolingo_f1(actual, predicted):
+    """
+    Computes the F1 score of your predictions. Note that we use 0.5 as the cutoff here.
+    """
+    num = len(actual)
+
+    true_positives = 0
+    false_positives = 0
+    false_negatives = 0
+    true_negatives = 0
+
+    for i in range(num):
+        if actual[i] >= 0.5 and predicted[i] >= 0.5:
+            true_positives += 1
+        elif actual[i] < 0.5 and predicted[i] >= 0.5:
+            false_positives += 1
+        elif actual[i] >= 0.5 and predicted[i] < 0.5:
+            false_negatives += 1
+        else:
+            true_negatives += 1
+
+    try:
+        precision = true_positives / (true_positives + false_positives)
+        recall = true_positives / (true_positives + false_negatives)
+        F1 = 2 * precision * recall / (precision + recall)
+    except ZeroDivisionError:
+        F1 = 0.0
+
+    return F1
+

@@ -84,7 +84,7 @@ def train_one_dataset(params, file_name, train_q_data, train_qa_data, valid_q_da
 
     for idx in range(params.max_iter):
         train_loss, train_accuracy, train_auc, train_f1 = train(net, params, train_q_data, train_qa_data, label='Train')
-        valid_loss, valid_accuracy, valid_auc, valid_f1 = test(net, params, valid_q_data, valid_qa_data, label='Valid',
+        valid_loss, valid_accuracy, valid_auc, valid_f1, valid_auroc = test(net, params, valid_q_data, valid_qa_data, label='Valid',
                                                                split_data=split_data)
 
         print('epoch', idx + 1)
@@ -92,6 +92,7 @@ def train_one_dataset(params, file_name, train_q_data, train_qa_data, valid_q_da
         print("valid_accuracy\t", valid_accuracy, "\ttrain_accuracy\t", train_accuracy)
         print("valid_loss\t", valid_loss, "\ttrain_loss\t", train_loss)
         print("valid_f1\t", valid_f1, "\ttrain_f1\t", train_f1)
+        print("Valid AUROC\t", valid_auroc)
 
         net.save_checkpoint(prefix=os.path.join('model', params.save, file_name), epoch=idx + 1)
 
