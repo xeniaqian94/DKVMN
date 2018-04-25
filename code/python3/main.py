@@ -151,7 +151,7 @@ def test_one_dataset(params, file_name, test_q_data, test_qa_data, best_epoch):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Script to test KVMN.')
-    parser.add_argument('--gpus', type=str, default='0', help='the gpus will be used, e.g "0,1,2,3"')
+    parser.add_argument('--gpus', type=str, default=None, help='the gpus will be used, e.g "0,1,2,3"')
     parser.add_argument('--max_iter', type=int, default=50, help='number of iterations')
     parser.add_argument('--test', type=bool, default=False, help='enable testing')
     parser.add_argument('--train_test', type=bool, default=True, help='enable testing')
@@ -247,7 +247,7 @@ if __name__ == '__main__':
     params.memory_value_state_dim = params.qa_embed_dim
 
     params.dataset = dataset
-    if params.gpus == None:
+    if not params.gpus:
         ctx = mx.cpu()
         print("Training with cpu ...")
     else:
