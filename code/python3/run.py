@@ -4,6 +4,7 @@ import mxnet as mx
 import mxnet.ndarray as nd
 from sklearn import metrics
 
+
 def norm_clipping(params_grad, threshold):
     norm_val = 0.0
     for i in range(len(params_grad[0])):
@@ -22,10 +23,10 @@ def norm_clipping(params_grad, threshold):
 
 
 def binaryEntropy(target, pred, mod="avg"):
-    loss = target * np.log( np.maximum(1e-10,pred)) + \
-           (1.0 - target) * np.log( np.maximum(1e-10, 1.0-pred) )
+    loss = target * np.log(np.maximum(1e-10, pred)) + \
+           (1.0 - target) * np.log(np.maximum(1e-10, 1.0 - pred))
     if mod == 'avg':
-        return np.average(loss)*(-1.0)
+        return np.average(loss) * (-1.0)
     elif mod == 'sum':
         return - loss.sum()
     else:
@@ -33,8 +34,13 @@ def binaryEntropy(target, pred, mod="avg"):
 
 
 def compute_auc(all_target, all_pred):
-    #fpr, tpr, thresholds = metrics.roc_curve(all_target, all_pred, pos_label=1.0)
+    # fpr, tpr, thresholds = metrics.roc_curve(all_target, all_pred, pos_label=1.0)
     return metrics.roc_auc_score(all_target, all_pred)
+
+
+def compute_f1(all_target, all_pred):
+    return metrics.f1_score(all_target, all_pred)
+
 
 def compute_accuracy(all_target, all_pred):
     all_pred[all_pred > 0.5] = 1.0
@@ -42,10 +48,9 @@ def compute_accuracy(all_target, all_pred):
     return metrics.accuracy_score(all_target, all_pred)
 
 
-
 def train(net, params, q_data, qa_data, label):
     N = int(math.floor(len(q_data) / params.batch_size))
-    q_data = q_data.T # Shape: (200,3633)
+    q_data = q_data.T  # Shape: (200,3633)
     qa_data = qa_data.T  # Shape: (200,3633)
     # Shuffle the data
     shuffled_ind = np.arange(q_data.shape[1])
@@ -64,32 +69,32 @@ def train(net, params, q_data, qa_data, label):
     for idx in range(N):
         if params.show: bar.next()
 
-        q_one_seq = q_data[: , idx*params.batch_size:(idx+1)*params.batch_size]
-        input_q = q_one_seq[:,:] # Shape (seqlen, batch_size)
-        qa_one_seq = qa_data[:, idx*params.batch_size:(idx+1) * params.batch_size]
+        q_one_seq = q_data[:, idx * params.batch_size:(idx + 1) * params.batch_size]
+        input_q = q_one_seq[:, :]  # Shape (seqlen, batch_size)
+        qa_one_seq = qa_data[:, idx * params.batch_size:(idx + 1) * params.batch_size]
         input_qa = qa_one_seq[:, :]  # Shape (seqlen, batch_size)
 
         target = qa_one_seq[:, :]
-        #target = target.astype(np.int)
-        #print(target)
+        # target = target.astype(np.int)
+        # print(target)
         target = (target - 1) / params.n_question
         target = np.floor(target)
-        #print(target)
-        #target = target.astype(np.float) # correct: 1.0; wrong 0.0; padding -1.0
+        # print(target)
+        # target = target.astype(np.float) # correct: 1.0; wrong 0.0; padding -1.0
 
         input_q = mx.nd.array(input_q)
         input_qa = mx.nd.array(input_qa)
         target = mx.nd.array(target)
 
-        data_batch = mx.io.DataBatch(data = [input_q, input_qa], label = [target])
+        data_batch = mx.io.DataBatch(data=[input_q, input_qa], label=[target])
         net.forward(data_batch, is_train=True)
-        pred = net.get_outputs()[0].asnumpy() #(seqlen * batch_size, 1)
+        pred = net.get_outputs()[0].asnumpy()  # (seqlen * batch_size, 1)
         net.backward()
 
         norm_clipping(net._exec_group.grad_arrays, params.maxgradnorm)
         net.update()
 
-        target = target.asnumpy().reshape((-1,)) # correct: 1.0; wrong 0.0; padding -1.0
+        target = target.asnumpy().reshape((-1,))  # correct: 1.0; wrong 0.0; padding -1.0
 
         nopadding_index = np.flatnonzero(target != -1.0)
         nopadding_index = nopadding_index.tolist()
@@ -101,7 +106,7 @@ def train(net, params, q_data, qa_data, label):
 
     if params.show: bar.finish()
 
-    all_pred = np.concatenate(pred_list,axis=0)
+    all_pred = np.concatenate(pred_list, axis=0)
     all_target = np.concatenate(target_list, axis=0)
 
     loss = binaryEntropy(all_target, all_pred)
@@ -110,7 +115,7 @@ def train(net, params, q_data, qa_data, label):
     auc = compute_auc(all_target, all_pred)
     accuracy = compute_accuracy(all_target, all_pred)
 
-    return loss, accuracy, auc
+    return loss, accuracy, auc, compute_f1(all_target, all_pred)
 
 
 def test(net, params, q_data, qa_data, label):
@@ -133,14 +138,14 @@ def test(net, params, q_data, qa_data, label):
         inds = np.arange(idx * params.batch_size, (idx + 1) * params.batch_size)
         q_one_seq = q_data.take(inds, axis=1, mode='wrap')
         qa_one_seq = qa_data.take(inds, axis=1, mode='wrap')
-        #print 'seq_num', seq_num
+        # print 'seq_num', seq_num
 
         input_q = q_one_seq[:, :]  # Shape (seqlen, batch_size)
         input_qa = qa_one_seq[:, :]  # Shape (seqlen, batch_size)
         target = qa_one_seq[:, :]
-        #target = target.astype(np.int)
-        #target = (target - 1) / params.n_question
-        #target = target.astype(np.float)  # correct: 1.0; wrong 0.0; padding -1.0
+        # target = target.astype(np.int)
+        # target = (target - 1) / params.n_question
+        # target = target.astype(np.float)  # correct: 1.0; wrong 0.0; padding -1.0
         target = (target - 1) / params.n_question
         target = np.floor(target)
 
@@ -168,13 +173,12 @@ def test(net, params, q_data, qa_data, label):
         target_nopadding = target[nopadding_index]
 
         element_count += pred_nopadding.shape[0]
-        #print avg_loss
+        # print avg_loss
         pred_list.append(pred_nopadding)
         target_list.append(target_nopadding)
 
     if params.show: bar.finish()
     assert count == seq_num
-
 
     all_pred = np.concatenate(pred_list, axis=0)
     all_target = np.concatenate(target_list, axis=0)
@@ -183,4 +187,4 @@ def test(net, params, q_data, qa_data, label):
     auc = compute_auc(all_target, all_pred)
     accuracy = compute_accuracy(all_target, all_pred)
 
-    return loss, accuracy, auc
+    return loss, accuracy, auc, compute_f1(all_target, all_pred)

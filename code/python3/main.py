@@ -83,13 +83,16 @@ def train_one_dataset(params, file_name, train_q_data, train_qa_data, valid_q_da
     best_valid_auc = 0
 
     for idx in range(params.max_iter):
-        train_loss, train_accuracy, train_auc = train(net, params, train_q_data, train_qa_data, label='Train')
-        valid_loss, valid_accuracy, valid_auc = test(net, params, valid_q_data, valid_qa_data, label='Valid')
+        train_loss, train_accuracy, train_auc, train_f1 = train(net, params, train_q_data, train_qa_data, label='Train')
+        valid_loss, valid_accuracy, valid_auc, valid_f1 = test(net, params, valid_q_data, valid_qa_data, label='Valid')
 
         print('epoch', idx + 1)
         print("valid_auc\t", valid_auc, "\ttrain_auc\t", train_auc)
         print("valid_accuracy\t", valid_accuracy, "\ttrain_accuracy\t", train_accuracy)
         print("valid_loss\t", valid_loss, "\ttrain_loss\t", train_loss)
+        print("valid_f1\t",valid_f1,"\ttrain_f1\t",train_f1)
+
+
         net.save_checkpoint(prefix=os.path.join('model', params.save, file_name), epoch=idx + 1)
 
         all_valid_auc[idx + 1] = valid_auc
