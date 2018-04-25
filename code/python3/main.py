@@ -85,7 +85,7 @@ def train_one_dataset(params, file_name, train_q_data, train_qa_data, valid_q_da
     for idx in range(params.max_iter):
         train_loss, train_accuracy, train_auc, train_f1 = train(net, params, train_q_data, train_qa_data, label='Train')
         valid_loss, valid_accuracy, valid_auc, valid_f1, valid_auroc = test(net, params, valid_q_data, valid_qa_data, label='Valid',
-                                                               split_data=split_data)
+                                                               split_data=split_data,ext=params.ext)
 
         print('epoch', idx + 1)
         print("valid_auc\t", valid_auc, "\ttrain_auc\t", train_auc)
@@ -157,8 +157,9 @@ if __name__ == '__main__':
     parser.add_argument('--test', type=bool, default=False, help='enable testing')
     parser.add_argument('--train_test', type=bool, default=True, help='enable testing')
     parser.add_argument('--show', type=bool, default=True, help='print progress')
+    parser.add_argument('--ext', type=str, default='1',help='extension to save the f1s and aurocs')
 
-    dataset = "assist2009_updated"  # synthetic / assist2009_updated / assist2015 / KDDal0506 / STATICS
+    dataset = "duolingo"  # synthetic / assist2009_updated / assist2015 / KDDal0506 / STATICS
 
     if dataset == "synthetic":
         parser.add_argument('--batch_size', type=int, default=32, help='the batch size')
@@ -243,6 +244,28 @@ if __name__ == '__main__':
         parser.add_argument('--data_name', type=str, default='STATICS', help='data set name')
         parser.add_argument('--load', type=str, default='STATICS', help='model file to load')
         parser.add_argument('--save', type=str, default='STATICS', help='path to save model')
+
+    if dataset == "duolingo":
+        parser.add_argument('--batch_size', type=int, default=32, help='the batch size')
+        parser.add_argument('--q_embed_dim', type=int, default=50, help='question embedding dimensions')
+        parser.add_argument('--qa_embed_dim', type=int, default=200, help='answer and question embedding dimensions')
+        parser.add_argument('--memory_size', type=int, default=20, help='memory size')
+
+        parser.add_argument('--init_std', type=float, default=0.1, help='weight initialization std')
+        parser.add_argument('--init_lr', type=float, default=0.05, help='initial learning rate')
+        parser.add_argument('--final_lr', type=float, default=1E-5,
+                            help='learning rate will not decrease after hitting this threshold')
+        parser.add_argument('--momentum', type=float, default=0.9, help='momentum rate')
+        parser.add_argument('--maxgradnorm', type=float, default=50.0, help='maximum gradient norm')
+        parser.add_argument('--final_fc_dim', type=float, default=50, help='hidden state dim for final fc layer')
+
+        parser.add_argument('--n_question', type=int, default=3301, help='the number of unique questions in the dataset')
+        parser.add_argument('--seqlen', type=int, default=8000, help='the allowed maximum length of a sequence')
+        parser.add_argument('--data_dir', type=str, default='../../data/duolingo', help='data directory')
+        parser.add_argument('--data_name', type=str, default='duolingo', help='data set name')
+        parser.add_argument('--load', type=str, default='duo_model', help='model file to load')
+        parser.add_argument('--save', type=str, default='duolingo', help='path to save model')
+        parser.add_argument('--split', dest='split', action='store_true')
 
     params = parser.parse_args()
     params.lr = params.init_lr

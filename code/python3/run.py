@@ -4,6 +4,8 @@ import mxnet as mx
 import mxnet.ndarray as nd
 from sklearn import metrics
 
+f1s = []
+aurocs = []
 
 def norm_clipping(params_grad, threshold):
     norm_val = 0.0
@@ -119,7 +121,7 @@ def train(net, params, q_data, qa_data, label):
     return loss, accuracy, auc, compute_f1(all_target, all_pred)
 
 
-def test(net, params, q_data, qa_data, label, split_data=None):
+def test(net, params, q_data, qa_data, label, split_data=None, ext=''):
     # dataArray: [ array([[],[],..])] Shape: (3633, 200)
     N = int(math.ceil(float(len(q_data)) / float(params.batch_size)))
     q_data = q_data.T  # Shape: (200,3633) = seqlen*total_size
@@ -171,7 +173,7 @@ def test(net, params, q_data, qa_data, label, split_data=None):
             count += params.batch_size
 
         target = target.T  # correct: 1.0; wrong 0.0; padding -1.0
-        print("\ntarget/pred real shape "+str(target.shape)+" we then trim out padding per end of line wherever target=-1.0")  # we expect it to be batch_size * seqlen
+        # print("\ntarget/pred real shape "+str(target.shape)+" we then trim out padding per end of line wherever target=-1.0")  # we expect it to be batch_size * seqlen
         target=target.reshape((-1,))
 
         nopadding_index = np.flatnonzero(target != -1.0)
@@ -195,7 +197,6 @@ def test(net, params, q_data, qa_data, label, split_data=None):
     print(all_target, len(all_target))
 
     if split_data is not None:
-        # print(split_data)
         all_pred, all_target = trim_valid_only(all_pred, all_target, split_data)
 
     print("after trimming to have valid only...")
@@ -207,7 +208,12 @@ def test(net, params, q_data, qa_data, label, split_data=None):
     auc = compute_auc(all_target, all_pred)
     accuracy = compute_accuracy(all_target, all_pred)
 
-    return loss, accuracy, auc, compute_f1(all_target, all_pred), compute_auroc(all_target, all_pred)
+    auroc = compute_auroc(all_target, all_pred)
+    aurocs.append(auroc)
+    f1s.append(compute_duolingo_f1(all_target, all_pred))
+    np.save("results/f1s_"+ext+".npy", f1s)
+    np.save("results/aurocs_"+ext+".npy", aurocs)
+    return loss, accuracy, auc, compute_f1(all_target, all_pred), aurocs
 
 
 def trim_valid_only(all_pred, all_target, split_data):
