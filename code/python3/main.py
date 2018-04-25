@@ -247,7 +247,7 @@ if __name__ == '__main__':
     params.memory_value_state_dim = params.qa_embed_dim
 
     params.dataset = dataset
-    if params.gpus == None or params.gpus == '0':
+    if params.gpus == None:
         ctx = mx.cpu()
         print("Training with cpu ...")
     else:
