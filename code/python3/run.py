@@ -195,10 +195,10 @@ def test(net, params, q_data, qa_data, label, split_data=None):
     print(all_target, len(all_target))
 
     if split_data is not None:
-        print(split_data)
+        # print(split_data)
         all_pred, all_target = trim_valid_only(all_pred, all_target, split_data)
 
-    print("after triming to have valid only...")
+    print("after trimming to have valid only...")
     print(all_pred, len(all_pred))
     print(all_target, len(all_target))
 
