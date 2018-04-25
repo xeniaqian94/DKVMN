@@ -50,6 +50,7 @@ def compute_accuracy(all_target, all_pred):
 
 def train(net, params, q_data, qa_data, label):
     N = int(math.floor(len(q_data) / params.batch_size))
+    print("train_N "+str(N))
     q_data = q_data.T  # Shape: (200,3633)
     qa_data = qa_data.T  # Shape: (200,3633)
     # Shuffle the data
@@ -110,15 +111,17 @@ def train(net, params, q_data, qa_data, label):
     all_target = np.concatenate(target_list, axis=0)
 
     loss = binaryEntropy(all_target, all_pred)
-    print("all_target", all_target)
-    print("all_pred", all_pred)
+    # print("all_target", all_target, len(all_target))
+    # print("all_pred", all_pred, len(all_pred))
     auc = compute_auc(all_target, all_pred)
     accuracy = compute_accuracy(all_target, all_pred)
 
     return loss, accuracy, auc, compute_f1(all_target, all_pred)
 
 
-def test(net, params, q_data, qa_data, label):
+
+
+def test(net, params, q_data, qa_data, label, split_data=None):
     # dataArray: [ array([[],[],..])] Shape: (3633, 200)
     N = int(math.ceil(float(len(q_data)) / float(params.batch_size)))
     q_data = q_data.T  # Shape: (200,3633)
@@ -183,8 +186,38 @@ def test(net, params, q_data, qa_data, label):
     all_pred = np.concatenate(pred_list, axis=0)
     all_target = np.concatenate(target_list, axis=0)
 
+    print(all_pred,len(all_pred))
+    print(all_target,len(all_target))
+
+    if split_data is not None:
+        print(split_data)
+        all_pred,all_target=trim_valid_only(all_pred,all_target,split_data)
+
+    print("after triming to have valid only...")
+    print(all_pred, len(all_pred))
+    print(all_target, len(all_target))
+
     loss = binaryEntropy(all_target, all_pred)
     auc = compute_auc(all_target, all_pred)
     accuracy = compute_accuracy(all_target, all_pred)
 
     return loss, accuracy, auc, compute_f1(all_target, all_pred)
+
+
+
+def trim_valid_only(all_pred, all_target, split_data):
+    pred_list = []
+    target_list = []
+
+    start=0
+    end=0
+    for split_per_user in split_data:
+        start=end+split_per_user[0] # adds pure train length for this user
+        end=start+split_per_user[1] # adds pure valid length for this user
+        pred_list.append(all_pred[start:end])
+        target_list.append(all_target[start:end])
+
+    all_pred = np.concatenate(pred_list, axis=0)
+    all_target = np.concatenate(target_list, axis=0)
+
+    return all_pred,all_target

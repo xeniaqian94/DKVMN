@@ -2,8 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bb2dd510-68a3-41e0-bdd1-e636b48b0985" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change beforePath="$PROJECT_DIR$/code/python3/.ipynb_checkpoints/duolingo_csv2_80_90_100_division-checkpoint.ipynb" afterPath="$PROJECT_DIR$/code/python3/.ipynb_checkpoints/duolingo_csv2_80_90_100_division-checkpoint.ipynb" />
+      <change beforePath="$PROJECT_DIR$/code/python3/duolingo_csv2_80_90_100_division.ipynb" afterPath="$PROJECT_DIR$/code/python3/duolingo_csv2_80_90_100_division.ipynb" />
+      <change beforePath="$PROJECT_DIR$/code/python3/load_data.py" afterPath="$PROJECT_DIR$/code/python3/load_data.py" />
       <change beforePath="$PROJECT_DIR$/code/python3/main.py" afterPath="$PROJECT_DIR$/code/python3/main.py" />
       <change beforePath="$PROJECT_DIR$/code/python3/run.py" afterPath="$PROJECT_DIR$/code/python3/run.py" />
+      <change beforePath="$PROJECT_DIR$/data/duolingo/new_split_appendFalse_token_user_division" afterPath="$PROJECT_DIR$/data/duolingo/new_split_appendFalse_token_unsplitted_user_division" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -14,24 +20,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="run.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/code/python3/run.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1435">
-              <caret line="117" column="42" lean-forward="false" selection-start-line="117" selection-start-column="32" selection-end-line="117" selection-end-column="42" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="479">
-                <caret line="81" column="0" lean-forward="false" selection-start-line="80" selection-start-column="18" selection-end-line="81" selection-end-column="0" />
+              <first_editor relative-caret-position="401">
+                <caret line="82" column="21" lean-forward="false" selection-start-line="82" selection-start-column="3" selection-end-line="82" selection-end-column="21" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -42,19 +36,21 @@
       <file leaf-file-name="load_data.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/code/python3/load_data.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="690">
-              <caret line="47" column="40" lean-forward="true" selection-start-line="47" selection-start-column="40" selection-end-line="47" selection-end-column="40" />
+            <state relative-caret-position="86">
+              <caret line="21" column="22" lean-forward="false" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="new_split_appendFalse_token_id_mapping.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data/duolingo/new_split_appendFalse_token_id_mapping.txt">
+      <file leaf-file-name="run.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/code/python3/run.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-48879">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="273">
+              <caret line="199" column="46" lean-forward="false" selection-start-line="199" selection-start-column="46" selection-end-line="199" selection-end-column="46" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -62,15 +58,15 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/code/python3/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="474">
-              <caret line="93" column="0" lean-forward="false" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
+            <state relative-caret-position="559">
+              <caret line="282" column="41" lean-forward="false" selection-start-line="282" selection-start-column="12" selection-end-line="282" selection-end-column="41" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="new_split_token_unsplitted_train1.csv" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data/duolingo/new_split_token_unsplitted_train1.csv">
+      <file leaf-file-name="new_split_appendTrue_token_unsplitted_test.csv" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data/duolingo/new_split_appendTrue_token_unsplitted_test.csv">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -79,8 +75,18 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="new_split_appendFalse_token_unsplitted_train1.csv" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data/duolingo/new_split_appendFalse_token_unsplitted_train1.csv">
+      <file leaf-file-name="new_split_appendTrue_token_unsplitted_user_division" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data/duolingo/new_split_appendTrue_token_unsplitted_user_division">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="435">
+              <caret line="29" column="15" lean-forward="false" selection-start-line="29" selection-start-column="15" selection-end-line="29" selection-end-column="15" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="new_split_appendTrue_token_unsplitted_toy_train1.csv" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data/duolingo/new_split_appendTrue_token_unsplitted_toy_train1.csv">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -89,31 +95,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="new_split_appendFalse_token_unsplitted_valid1.csv" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data/duolingo/new_split_appendFalse_token_unsplitted_valid1.csv">
+      <file leaf-file-name="new_split_appendTrue_token_unsplitted_toy_valid1.csv" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data/duolingo/new_split_appendTrue_token_unsplitted_toy_valid1.csv">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="new_split_appendTrue_token_unsplitted_toy_test.csv" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data/duolingo/new_split_appendTrue_token_unsplitted_toy_test.csv">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="new_split_appendTrue_token_unsplitted_toy_user_division" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/data/duolingo/new_split_appendTrue_token_unsplitted_toy_user_division">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="150">
-              <caret line="10" column="43" lean-forward="false" selection-start-line="10" selection-start-column="43" selection-end-line="10" selection-end-column="43" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="new_split_appendFalse_token_unsplitted_test.csv" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data/duolingo/new_split_appendFalse_token_unsplitted_test.csv">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" column="9" lean-forward="false" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="new_split_appendFalse_token_user_division" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data/duolingo/new_split_appendFalse_token_user_division">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -138,6 +144,7 @@
       <find>test(</find>
       <find>train_q_data</find>
       <find>sample</find>
+      <find>load_data</find>
       <find>not enough values</find>
     </findStrings>
   </component>
@@ -148,14 +155,15 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/code/main.py" />
-        <option value="$PROJECT_DIR$/code/python3/load_data.py" />
         <option value="$PROJECT_DIR$/code/python3/split_data_532.py" />
         <option value="$PROJECT_DIR$/code/python3/duolingo_analysis_from_csv.ipynb" />
         <option value="$PROJECT_DIR$/data/duolingo/part_of_speech_id_mapping.txt" />
         <option value="$PROJECT_DIR$/code/python3/duolingo_csv2split.py" />
         <option value="$PROJECT_DIR$/code/python3/duolingo_data2csv.py" />
-        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/data/duolingo/new_split_appendFalse_token_unsplitted_toy_user_division" />
         <option value="$PROJECT_DIR$/code/python3/main.py" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/code/python3/load_data.py" />
         <option value="$PROJECT_DIR$/code/python3/run.py" />
       </list>
     </option>
@@ -166,10 +174,10 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="105" />
-    <option name="y" value="23" />
-    <option name="width" value="2664" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="30" />
+    <option name="y" value="-960" />
+    <option name="width" value="1574" />
     <option name="height" value="823" />
   </component>
   <component name="ProjectView">
@@ -234,6 +242,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///Users/xin/Desktop/DKVMN/README.md" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -337,17 +346,17 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="823" extended-state="6" />
+    <frame x="30" y="-960" width="1574" height="823" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12013889" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="0" y="0" width="310" height="623" />
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.109911054" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="0" y="0" width="310" height="623" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22986111" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3278272" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -376,76 +385,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/data/duolingo/token_unsplitted_test.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="387">
-          <caret line="1631" column="1389" lean-forward="false" selection-start-line="1631" selection-start-column="1389" selection-end-line="1631" selection-end-column="1389" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/duolingo/user_id_mapping.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/duolingo/token_unsplitted_train1.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="757815">
-          <caret line="3982" column="255" lean-forward="false" selection-start-line="3982" selection-start-column="255" selection-end-line="3982" selection-end-column="255" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/duolingo/token_id_mapping2.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/duolingo/token_id_mapping.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/duolingo/user_id_mapping2.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" column="14" lean-forward="false" selection-start-line="29" selection-start-column="14" selection-end-line="29" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/duolingo/token_unsplitted_train2.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/python3/model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/python3/memory.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
-          <caret line="41" column="7" lean-forward="false" selection-start-line="41" selection-start-column="7" selection-end-line="41" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/duolingo/part_of_speech_id_mapping.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="6" lean-forward="false" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data/duolingo/part_of_speech_unsplitted_train.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="214">
@@ -567,14 +506,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/duolingo/new_split_token_id_mapping.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="49440">
-          <caret line="3296" column="16" lean-forward="false" selection-start-line="3296" selection-start-column="16" selection-end-line="3296" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data/duolingo/new_split_token_unsplitted_valid1.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -594,14 +525,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="23" column="14" lean-forward="false" selection-start-line="23" selection-start-column="14" selection-end-line="23" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/duolingo/new_split_token_user_division">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="18" lean-forward="false" selection-start-line="0" selection-start-column="16" selection-end-line="0" selection-end-column="18" />
           <folding />
         </state>
       </provider>
@@ -685,15 +608,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/duolingo/new_split_appendFalse_token_unsplitted_test.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="9" lean-forward="false" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/duolingo/new_split_appendFalse_token_user_division">
+    <entry file="file://$PROJECT_DIR$/data/duolingo/new_split_appendFalse_token_unsplitted_user_division">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -709,6 +624,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/data/duolingo/new_split_appendFalse_token_unsplitted_test.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="9" lean-forward="false" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/data/duolingo/new_split_appendFalse_token_unsplitted_valid1.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -717,11 +640,117 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/data/duolingo/new_split_token_user_division">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="8" lean-forward="false" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/duolingo/new_split_appendFalse_token_unsplitted_toy_user_division">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="18" lean-forward="false" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/duolingo/new_split_appendFalse_token_unsplitted_toy_vali1.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/duolingo/new_split_appendFalse_token_unsplitted_toy_train1.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/duolingo/new_split_appendFalse_token_unsplitted_toy_valid1.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/duolingo/new_split_token_id_mapping.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="696">
+          <caret line="3296" column="16" lean-forward="false" selection-start-line="3296" selection-start-column="16" selection-end-line="3296" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/duolingo/new_split_appendTrue_token_unsplitted_test.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/duolingo/new_split_appendTrue_token_unsplitted_toy_train1.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/duolingo/new_split_appendTrue_token_unsplitted_toy_valid1.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/duolingo/new_split_appendTrue_token_unsplitted_toy_test.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/python3/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="559">
+          <caret line="282" column="41" lean-forward="false" selection-start-line="282" selection-start-column="12" selection-end-line="282" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/python3/load_data.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="86">
+          <caret line="21" column="22" lean-forward="false" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/python3/run.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="199" column="46" lean-forward="false" selection-start-line="199" selection-start-column="46" selection-end-line="199" selection-end-column="46" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="479">
-            <caret line="81" column="0" lean-forward="false" selection-start-line="80" selection-start-column="18" selection-end-line="81" selection-end-column="0" />
+          <first_editor relative-caret-position="401">
+            <caret line="82" column="21" lean-forward="false" selection-start-line="82" selection-start-column="3" selection-end-line="82" selection-end-column="21" />
             <folding />
           </first_editor>
           <second_editor />
@@ -734,29 +763,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/code/python3/load_data.py">
+    <entry file="file://$PROJECT_DIR$/data/duolingo/new_split_appendTrue_token_unsplitted_user_division">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="690">
-          <caret line="47" column="40" lean-forward="true" selection-start-line="47" selection-start-column="40" selection-end-line="47" selection-end-column="40" />
+        <state relative-caret-position="435">
+          <caret line="29" column="15" lean-forward="false" selection-start-line="29" selection-start-column="15" selection-end-line="29" selection-end-column="15" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/code/python3/main.py">
+    <entry file="file://$PROJECT_DIR$/data/duolingo/new_split_appendTrue_token_unsplitted_toy_user_division">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="474">
-          <caret line="93" column="0" lean-forward="false" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
+        <state relative-caret-position="150">
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/python3/run.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1435">
-          <caret line="117" column="42" lean-forward="false" selection-start-line="117" selection-start-column="32" selection-end-line="117" selection-end-column="42" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>

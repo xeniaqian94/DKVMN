@@ -40,7 +40,7 @@ def load_params(prefix, epoch):
     return arg_params, aux_params
 
 
-def train_one_dataset(params, file_name, train_q_data, train_qa_data, valid_q_data, valid_qa_data):
+def train_one_dataset(params, file_name, train_q_data, train_qa_data, valid_q_data, valid_qa_data, split_data=None):
     ### ================================== model initialization ==================================
     g_model = MODEL(n_question=params.n_question,
                     seqlen=params.seqlen,
@@ -84,14 +84,14 @@ def train_one_dataset(params, file_name, train_q_data, train_qa_data, valid_q_da
 
     for idx in range(params.max_iter):
         train_loss, train_accuracy, train_auc, train_f1 = train(net, params, train_q_data, train_qa_data, label='Train')
-        valid_loss, valid_accuracy, valid_auc, valid_f1 = test(net, params, valid_q_data, valid_qa_data, label='Valid')
+        valid_loss, valid_accuracy, valid_auc, valid_f1 = test(net, params, valid_q_data, valid_qa_data, label='Valid',
+                                                               split_data=split_data)
 
         print('epoch', idx + 1)
         print("valid_auc\t", valid_auc, "\ttrain_auc\t", train_auc)
         print("valid_accuracy\t", valid_accuracy, "\ttrain_accuracy\t", train_accuracy)
         print("valid_loss\t", valid_loss, "\ttrain_loss\t", train_loss)
-        print("valid_f1\t",valid_f1,"\ttrain_f1\t",train_f1)
-
+        print("valid_f1\t", valid_f1, "\ttrain_f1\t", train_f1)
 
         net.save_checkpoint(prefix=os.path.join('model', params.save, file_name), epoch=idx + 1)
 
@@ -199,6 +199,8 @@ if __name__ == '__main__':
         parser.add_argument('--data_name', type=str, default='assist2009_updated', help='data set name')
         parser.add_argument('--load', type=str, default='assist2009_updated', help='model file to load')
         parser.add_argument('--save', type=str, default='assist2009_updated', help='path to save model')
+        parser.add_argument('--split', dest='split', action='store_true')
+
     elif dataset == "assist2015":
         parser.add_argument('--batch_size', type=int, default=50, help='the batch size')
         parser.add_argument('--q_embed_dim', type=int, default=50, help='question embedding dimensions')
@@ -273,15 +275,25 @@ if __name__ == '__main__':
                     '_f' + str(params.final_fc_dim) + '_s' + str(seedNum)
         train_data_path = params.data_dir + "/" + params.data_name + "_train1.csv"
         valid_data_path = params.data_dir + "/" + params.data_name + "_valid1.csv"
+
         train_q_data, train_qa_data = dat.load_data(train_data_path)
-        valid_q_data, valid_qa_data = dat.load_data(valid_data_path)
+
+        how_to_split_train_valid_path = None
+        if params.split:
+            how_to_split_train_valid_path = params.data_dir + "/" + params.data_name + "_user_division"
+            valid_q_data, valid_qa_data, split_data = dat.load_data(valid_data_path,
+                                                                    split_path=how_to_split_train_valid_path)
+        else:
+            valid_q_data, valid_qa_data = dat.load_data(valid_data_path)
+            split_data = None
         print("\n")
         print("train_q_data.shape", train_q_data.shape, train_q_data)  ###(3633, 200) = (#sample, seqlen)
         print("train_qa_data.shape", train_qa_data.shape, train_qa_data)  ###(3633, 200) = (#sample, seqlen)
         print("valid_q_data.shape", valid_q_data.shape)  ###(1566, 200)
         print("valid_qa_data.shape", valid_qa_data.shape)  ###(1566, 200)
         print("\n")
-        best_epoch = train_one_dataset(params, file_name, train_q_data, train_qa_data, valid_q_data, valid_qa_data)
+        best_epoch = train_one_dataset(params, file_name, train_q_data, train_qa_data, valid_q_data, valid_qa_data,
+                                       split_data=split_data)
         if params.train_test:
             test_data_path = params.data_dir + "/" + params.data_name + "_test.csv"
             test_q_data, test_qa_data = dat.load_data(test_data_path)
