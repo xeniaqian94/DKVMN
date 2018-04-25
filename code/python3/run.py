@@ -50,7 +50,7 @@ def compute_accuracy(all_target, all_pred):
 
 def train(net, params, q_data, qa_data, label):
     N = int(math.floor(len(q_data) / params.batch_size))
-    print("train_N "+str(N))
+    print("train_N " + str(N))
     q_data = q_data.T  # Shape: (200,3633)
     qa_data = qa_data.T  # Shape: (200,3633)
     # Shuffle the data
@@ -119,12 +119,10 @@ def train(net, params, q_data, qa_data, label):
     return loss, accuracy, auc, compute_f1(all_target, all_pred)
 
 
-
-
 def test(net, params, q_data, qa_data, label, split_data=None):
     # dataArray: [ array([[],[],..])] Shape: (3633, 200)
     N = int(math.ceil(float(len(q_data)) / float(params.batch_size)))
-    q_data = q_data.T  # Shape: (200,3633)
+    q_data = q_data.T  # Shape: (200,3633) = seqlen*total_size
     qa_data = qa_data.T  # Shape: (200,3633)
     seq_num = q_data.shape[1]
     pred_list = []
@@ -159,19 +157,26 @@ def test(net, params, q_data, qa_data, label, split_data=None):
         data_batch = mx.io.DataBatch(data=[input_q, input_qa], label=[])
         net.forward(data_batch, is_train=False)
         pred = net.get_outputs()[0].asnumpy()
+        # print(pred.shape)
         target = target.asnumpy()
         if (idx + 1) * params.batch_size > seq_num:
             real_batch_size = seq_num - idx * params.batch_size
             target = target[:, :real_batch_size]
-            pred = pred.reshape((params.seqlen, params.batch_size))[:, :real_batch_size]
-            pred = pred.reshape((-1,))
+            pred = pred.reshape((params.seqlen, params.batch_size))[:,
+                   :real_batch_size]  # numpy array of size seqlen*real_batch_size
+            pred = pred.T.reshape((-1,))
             count += real_batch_size
         else:
+            pred = pred.reshape((params.seqlen, params.batch_size)).T.reshape((-1,))
             count += params.batch_size
 
-        target = target.reshape((-1,))  # correct: 1.0; wrong 0.0; padding -1.0
+        target = target.T  # correct: 1.0; wrong 0.0; padding -1.0
+        print("\ntarget/pred real shape "+str(target.shape)+" we then trim out padding per end of line wherever target=-1.0")  # we expect it to be batch_size * seqlen
+        target=target.reshape((-1,))
+
         nopadding_index = np.flatnonzero(target != -1.0)
         nopadding_index = nopadding_index.tolist()
+        # input(nopadding_index)
         pred_nopadding = pred[nopadding_index]
         target_nopadding = target[nopadding_index]
 
@@ -186,12 +191,12 @@ def test(net, params, q_data, qa_data, label, split_data=None):
     all_pred = np.concatenate(pred_list, axis=0)
     all_target = np.concatenate(target_list, axis=0)
 
-    print(all_pred,len(all_pred))
-    print(all_target,len(all_target))
+    print(all_pred, len(all_pred))
+    print(all_target, len(all_target))
 
     if split_data is not None:
         print(split_data)
-        all_pred,all_target=trim_valid_only(all_pred,all_target,split_data)
+        all_pred, all_target = trim_valid_only(all_pred, all_target, split_data)
 
     print("after triming to have valid only...")
     print(all_pred, len(all_pred))
@@ -204,20 +209,19 @@ def test(net, params, q_data, qa_data, label, split_data=None):
     return loss, accuracy, auc, compute_f1(all_target, all_pred)
 
 
-
 def trim_valid_only(all_pred, all_target, split_data):
     pred_list = []
     target_list = []
 
-    start=0
-    end=0
+    start = 0
+    end = 0
     for split_per_user in split_data:
-        start=end+split_per_user[0] # adds pure train length for this user
-        end=start+split_per_user[1] # adds pure valid length for this user
+        start = end + split_per_user[0]  # adds pure train length for this user
+        end = start + split_per_user[1]  # adds pure valid length for this user
         pred_list.append(all_pred[start:end])
         target_list.append(all_target[start:end])
 
     all_pred = np.concatenate(pred_list, axis=0)
     all_target = np.concatenate(target_list, axis=0)
 
-    return all_pred,all_target
+    return all_pred, all_target
