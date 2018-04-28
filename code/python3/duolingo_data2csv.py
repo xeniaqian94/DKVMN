@@ -119,8 +119,13 @@ def create_csv(input_path):
             records+=[instance_properties]
         
 #         df.to_csv(csv_path)
-                
-                
+
+    records_dict = dict()
+    for ind, record in enumerate(records):
+        records_dict[ind] = record
+    df.from_dict(records_dict, orient='index').to_csv(csv_path)
+
+
 # create_csv("../data/data_es_en/es_en.slam.20171218.train")
 
 if __name__ == '__main__':
