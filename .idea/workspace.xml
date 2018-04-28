@@ -2,19 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bb2dd510-68a3-41e0-bdd1-e636b48b0985" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/code/python3/.ipynb_checkpoints/duolingo_csv2_80_90_100_division-checkpoint.ipynb" afterPath="$PROJECT_DIR$/code/python3/.ipynb_checkpoints/duolingo_csv2_80_90_100_division-checkpoint.ipynb" />
-      <change beforePath="$PROJECT_DIR$/code/python3/.ipynb_checkpoints/duolingo_data2csv-checkpoint.ipynb" afterPath="$PROJECT_DIR$/code/python3/.ipynb_checkpoints/duolingo_data2csv-checkpoint.ipynb" />
-      <change beforePath="$PROJECT_DIR$/code/python3/duolingo_csv2_80_90_100_division.ipynb" afterPath="$PROJECT_DIR$/code/python3/duolingo_csv2_80_90_100_division.ipynb" />
-      <change beforePath="$PROJECT_DIR$/code/python3/duolingo_data2csv.ipynb" afterPath="$PROJECT_DIR$/code/python3/duolingo_data2csv.ipynb" />
-      <change beforePath="$PROJECT_DIR$/code/python3/duolingo_data2csv.py" afterPath="$PROJECT_DIR$/code/python3/duolingo_data2csv.py" />
-      <change beforePath="$PROJECT_DIR$/data/duolingo/es_en.slam.20171218.dev.csv" afterPath="$PROJECT_DIR$/data/duolingo/es_en.slam.20171218.dev.csv" />
-      <change beforePath="$PROJECT_DIR$/data/duolingo/es_en.slam.20171218.test.csv" afterPath="$PROJECT_DIR$/data/duolingo/es_en.slam.20171218.test.csv" />
-      <change beforePath="$PROJECT_DIR$/data/duolingo/new_split_appendTrue_token_unsplitted_test.csv" afterPath="$PROJECT_DIR$/data/duolingo/new_split_appendTrue_token_unsplitted_test.csv" />
-      <change beforePath="$PROJECT_DIR$/data/duolingo/new_split_appendTrue_token_unsplitted_train1.csv" afterPath="$PROJECT_DIR$/data/duolingo/new_split_appendTrue_token_unsplitted_train1.csv" />
-      <change beforePath="$PROJECT_DIR$/data/duolingo/new_split_appendTrue_token_unsplitted_user_division" afterPath="$PROJECT_DIR$/data/duolingo/new_split_appendTrue_token_unsplitted_user_division" />
-      <change beforePath="$PROJECT_DIR$/data/duolingo/new_split_appendTrue_token_unsplitted_valid1.csv" afterPath="$PROJECT_DIR$/data/duolingo/new_split_appendTrue_token_unsplitted_valid1.csv" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -70,8 +58,8 @@
       <file leaf-file-name="duolingo_data2csv.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/code/python3/duolingo_data2csv.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1129">
-              <caret line="6" column="80" lean-forward="true" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="80" />
+            <state relative-caret-position="90">
+              <caret line="6" column="80" lean-forward="false" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="80" />
               <folding />
             </state>
           </provider>
@@ -756,8 +744,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/code/python3/duolingo_data2csv.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1129">
-          <caret line="6" column="80" lean-forward="true" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="80" />
+        <state relative-caret-position="90">
+          <caret line="6" column="80" lean-forward="false" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="80" />
           <folding />
         </state>
       </provider>
