@@ -82,6 +82,7 @@ cd code/python3/
 4. (042418 on GPU) python main.py --gpus 1 --n_question 3301  --seqlen 10000 --data_dir ../../data/duolingo --data_name new_split_appendFalse_token_unsplitted
 5. (042418.toy on CPU/PC) python main.py --n_question 3301  --seqlen 10000 --data_dir ../../data/duolingo --data_name new_split_appendTrue_token_unsplitted_toy --split --batch_size 3 
 6. (042518.real on GPU) python main.py --gpus 0 --n_question 3301  --seqlen 10000 --data_dir ../../data/duolingo --data_name new_split_token_unsplitted --split
+
 For reference (Hima):
 7. python main.py --gpus 3 --n_question 3301  --seqlen 10000 --data_dir ../../data/duolingo --data_name new_split_appendFalse_token_unsplitted --ext unsplit_token_mem_30 --memory_size 30
 8. python main.py --gpus 3 --n_question 3301  --seqlen 10000 --data_dir ../../data/duolingo --data_name unigram_pos --ext pos_token_mem_30 --memory_size 30
